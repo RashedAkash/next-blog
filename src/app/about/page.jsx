@@ -1,6 +1,10 @@
-import React from 'react';
 
-const AboutPage = () => {
+import { getPost, getPosts } from "@/lib/data";
+
+const AboutPage = async () => {
+  
+   const posts = await getPosts()
+ 
   return (
     <div>
       AboutPage

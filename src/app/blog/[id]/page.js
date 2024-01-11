@@ -2,6 +2,10 @@
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
+
+
+   
+
  
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -11,8 +15,17 @@
   return res.json()
 }
 
+export const generateMetadata = async ({params}) => {
+  const post = await getData(params.id)
+  return {
+    title: post.title,
+  description: post.body,
+  }
+}
+
 const BlogDetailsPage = async({params}) => {
-   const post = await getData(params.id)
+  const post = await getData(params.id)
+  console.log(post);
   return (
     <div>
        <div className="card w-96 bg-base-100 shadow-xl">
